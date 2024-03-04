@@ -56,6 +56,14 @@ class LimitlessCanvas {
             case 'scissor':
                 Tools.use(tool,x,y,this.ctx);
                 break;
+            case 'color':
+                this.color = this.customContextMenu.getColor();
+                this.customContextMenu.setTool('pen');
+                break;
+            case "size":
+                this.lineWidth = this.customContextMenu.getSize();
+                this.customContextMenu.setTool('pen');
+                break;
         }
     }
 
@@ -77,9 +85,6 @@ class LimitlessCanvas {
         this.lineWidth = width;
     }
 }
-
-// key shortcuts class
-
 
 // Create an instance of the LimitlessCanvas class
 const limitlessCanvas = new LimitlessCanvas();

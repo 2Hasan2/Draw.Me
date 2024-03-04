@@ -31,6 +31,7 @@ let Tools = {
 		ctx.fill();
 		ctx.restore();
 	}),
+	color: new Tool('Color', (x, y, ctx) => {}),
 	// function to use a tool
 	use: function (tool: string, x: number, y: number, ctx: CanvasRenderingContext2D) {
 		let toolName = tool as keyof typeof Tools;
