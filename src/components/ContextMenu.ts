@@ -2,29 +2,30 @@
 class CustomContextMenu {
 	private menu: HTMLElement;
 	private isOpen: boolean;
-
+	private tool: 'pen' | 'scissor';
 	constructor() {
 		this.menu = document.createElement('div');
 		this.menu.classList.add('context-menu');
 		this.isOpen = false;
+		this.tool = 'pen';
 
 		this.init();
 	}
 
 	private init() {
 		// Create menu options
-		const option1 = this.createOption('Option 1', () => {
-			console.log('Option 1 selected');
+		const penOption = this.createOption('Pen', () => {
+			this.tool = 'pen';
 			this.close();
 		});
-		const option2 = this.createOption('Option 2', () => {
-			console.log('Option 2 selected');
+		const scissorOption = this.createOption('Scissor', () => {
+			this.tool = 'scissor';
 			this.close();
 		});
 
 		// Append options to menu
-		this.menu.appendChild(option1);
-		this.menu.appendChild(option2);
+		this.menu.appendChild(penOption);
+		this.menu.appendChild(scissorOption);
 
 		// Append menu to body
 		document.body.appendChild(this.menu);
@@ -53,6 +54,10 @@ class CustomContextMenu {
 			this.isOpen = false;
 			this.menu.style.display = 'none';
 		}
+	}
+
+	public getTool(): 'pen' | 'scissor' {
+		return this.tool;
 	}
 }
 
