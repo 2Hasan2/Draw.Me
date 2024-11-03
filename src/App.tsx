@@ -2,17 +2,28 @@ import "./App.css";
 import { Tldraw } from "tldraw";
 import { useSyncDemo } from "@tldraw/sync";
 import "tldraw/tldraw.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  const roomId = window.location.pathname.replace("/", "").trim();
+  const [roomId, setRoomId] = useState("");
   const store = useSyncDemo({ roomId });
   const [newRoomId, setNewRoomId] = useState("");
+
+  // Get the roomId from query parameters on component mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("roomId");
+    if (id) {
+      setRoomId(id);
+    }
+  }, []);
 
   const handleRoomCreation = (e: React.FormEvent) => {
     e.preventDefault();
     if (newRoomId) {
-      window.location.pathname = `/${newRoomId}`;
+      // Update the URL with the new roomId in query parameters
+      window.history.pushState({}, "", `?roomId=${newRoomId}`);
+      setRoomId(newRoomId); // Set the roomId state to the new roomId
     }
   };
 
