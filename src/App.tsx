@@ -1,5 +1,5 @@
 import "./App.css";
-import { Tldraw, Editor } from "tldraw";
+import { Tldraw } from "tldraw";
 import { useSyncDemo } from "@tldraw/sync";
 import "tldraw/tldraw.css";
 
