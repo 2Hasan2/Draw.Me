@@ -1,13 +1,7 @@
 {
-	"compilerOptions": {
-		"target": "es5",
-		"module": "commonjs",
-		"strict": true
-	},
-	"include": [
-		"src/**/*.{ts,tsx,js}"
-	],
-	"files": [
-		"src/index.ts"
-	]
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }
